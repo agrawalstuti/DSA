@@ -1,0 +1,32 @@
+def mergeSort(nums,left,right):
+  if left<right:
+    mid = left+(right-left)//2
+    mergeSort(nums,left,mid)
+    mergeSort(nums,mid+1,right)
+    merge(nums,left,mid,right)
+
+def merge(nums,l,mid,r):
+  n1 = mid-l
+  n2 = r-mid+1
+
+  L = [nums[l+i] for i in range(n1)]
+  R = [nums[mid+i+1 for i in range(n2)]
+  i,j,k = 0,0,l
+  while i<n1 or j<n2:
+    if i<n1 and j<n2:
+      if L[i]<R[j]:
+        nums[k]=L[i]
+        i+=1
+      else:
+        nums[k]=R[j]
+        j+=1
+    elif i<n1:
+      nums[k]=L[i]
+      i+=1
+    elif j<n2:
+      nums[k]=R[j]
+      j+=1
+    k+=1
+nums = [9,8,7,5,4,3,1,2,6]
+mergeSort(nums,0,len(nums)-1)
+      
